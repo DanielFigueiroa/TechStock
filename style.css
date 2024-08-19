@@ -1,0 +1,12 @@
+body {
+  margin: auto;
+  background-image: linear-gradient(
+      rgba(30, 98, 151, 0.85),
+      rgba(30, 98, 151, 0.85)
+    ),
+    url("Imagens/fundo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
