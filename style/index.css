@@ -4,7 +4,7 @@ body {
       rgba(30, 98, 151, 0.85),
       rgba(30, 98, 151, 0.85)
     ),
-    url("/src/assets/fundo.png");
+    url("/assets/fundo.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
