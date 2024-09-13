@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Solicitação</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Solicitação</h1>
+
+    <h2>Itens</h2>
+
+    <table>
+        <tr>
+            <th>Grupo</th>
+            <th>Equipamento</th>
+            <th>Data de Entrega</th>
+        </tr>
+        <tr>
+            <td>Monitor</td>
+            <td>1 Monitor Samsung T360 24" FHD</td>
+            <td><input type="date" value="2024-06-04"></td>
+        </tr>
+        <tr>
+            <td>Cabo</td>
+            <td>Cabo de rede 5 metros</td>
+            <td><input type="date" value="2024-06-04"></td>
+        </tr>
+    </table>
+
+    <button class="button">Adicionar</button>
+
+    <h2>Histórico</h2>
+
+    <table>
+        <tr>
+            <th>Numero</th>
+            <th>ID Ticket</th>
+            <th>Grupo</th>
+            <th>Equipamento</th>
+            <th>Observção</th>
+            <th>Data Abertura</th>
+            <th>Data Entrega</th>
+            <th>Tratativa</th>
+            <th>status</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0001</td>
+            <td>Monitor</td>
+            <td>1 Monitor Samsung T350 24" FHD</td>
+            <td>Teste</td>
+            <td>2024-10-05</td>
+            <td>2024-10-05</td>
+            <td>Daniel Souza Lima</td>
+            <td><span style="color: green;">Aprovado</span></td>
+        </tr>
+    </table>
+
+    <h2>Observação</h2>
+
+    <textarea rows="5" cols="40"></textarea>
+
+</body>
+
+</html>
