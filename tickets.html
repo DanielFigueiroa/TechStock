@@ -182,9 +182,9 @@
                         <td>{{ticket.dt_abertura}}</td>
                         <td>{{ticket.dt_devolucao}}</td>
                         <td>{{ticket.observacao}}</td>
-                        <td>{{email}}</td>
-                        <td>{{admin}}</td>
-                        <td>{{setorId}}</td>
+                        <td>{{usuario.nome}}</td>
+                        <td hx-get="/api/setor">{{usuario.setorId.nome}}</td>
+                        <td>{{ticket.status}}</td>
                         <td>
                             <button class="btn" onclick="alert('falta implementar')">
                                 <span class="material-symbols-outlined">edit</span>

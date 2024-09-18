@@ -161,6 +161,7 @@
                 </table>
 
 
+
                 <template id="table-template">
                     {{#data}}
                     <tr>
@@ -173,11 +174,17 @@
                         <td>{{nome}}</td>
                         <td>lorem ipsum</td>
                         <td>{{email}}</td>
-                        <td hx-get="/api/setor">{{setor}}</td>
+                        <td hx-get="/api/setor/{{setorId}}" mustache-template="setor-nome-template" hx-trigger="load"
+                            hx-trigger="htmx:afterSettle">
+                            {{}}</td>
                         <td>{{admin}}</td>
 
                     </tr>
                     {{/data}}
+                </template>
+
+                <template id="setor-nome-template">
+                    {{data.nome}}
                 </template>
 
             </div>
