@@ -120,31 +120,69 @@
                 <div class="container flex-fill w-100">
                     <h2>Usuario</h2>
                 </div>
-                <div class="input-group p-2" style="width: 30%;">
-                    <input type="text" class="form-control" placeholder="Recipient's username"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+
+                <div class="input-group p-2" style="width: 60%;">
+                    <input type="text" class="form-control" placeholder="Pesquisar Usuario"
+                        aria-label="Recipient's username" aria-describedby="button-addon2"
+                        style="background-color: #E1E5EB;">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                        style="background-color: #6B737C;"><span class="material-symbols-outlined"
+                            style="color: #ffffff;">search</span></button>
                 </div>
                 <button class="add-button align-self-center">Adicionar</button>
             </div>
+
             <hr style="border-top: 3px solid #bbb;">
 
-            <div id="tabela" hx-get="/api/usuaro" mustache-array-template="usuario-tabela" hx-trigger="load"
-                hx-swap="none"></div>
+            <div hx-ext="client-side-templates">
 
-            <template id="usuario-tabela">
-                <!-- <p> {% raw %}{{userID}}{% endraw %} and {% raw %}{{id}}{% endraw %} and {% raw %}{{title}}{% endraw %} and {% raw
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    %}{{completed}}{% endraw %}</p> -->
+                <table hx-get="/api/usuario" hx-trigger="load" hx-swap="outerHTML" hx-target="#content"
+                    mustache-template="table-template">
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Nome Completo</th>
+                        <th>Codigo Usuario</th>
+                        <th>E-mail</th>
+                        <th>Setor</th>
+                        <th>Tipo de Usuario</th>
+                    </tr>
 
-                <!-- <p> {{data[0].nome}}</p> -->
+                    <tr id="content">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
 
-                {{#data}}
-                <b>{{data}}</b>
-                {{/data}}
+                </table>
 
-            </template>
+
+                <template id="table-template">
+                    {{#data}}
+                    <tr>
+                        <td>
+                            <button class="btn" onclick="alert('falta implementar')">
+                                <span class="material-symbols-outlined">edit</span>
+                            </button>
+                        </td>
+                        <td>{{id}}</td>
+                        <td>{{nome}}</td>
+                        <td>lorem ipsum</td>
+                        <td>{{email}}</td>
+                        <td hx-get="/api/setor">{{setor}}</td>
+                        <td>{{admin}}</td>
+
+                    </tr>
+                    {{/data}}
+                </template>
+
+            </div>
+
         </div>
-    </div>
     </div>
 
 </body>
