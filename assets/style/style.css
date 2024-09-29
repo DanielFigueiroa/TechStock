@@ -65,3 +65,7 @@ div#nav-out button:focus {
   background-color: #274f9d;
   color: white;
 }
+
+.botao-href {
+  text-decoration-line: none;
+}
