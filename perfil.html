@@ -118,17 +118,9 @@
         <div class="content">
             <div class="d-flex align-items-center">
                 <div class="container flex-fill w-100">
-                    <h2>Usuario</h2>
+                    <h2>Log & Abertura de Tickets</h2>
                 </div>
 
-                <div class="input-group p-2" style="width: 60%;">
-                    <input type="text" class="form-control" placeholder="Pesquisar Usuario"
-                        aria-label="Recipient's username" aria-describedby="button-addon2"
-                        style="background-color: #E1E5EB;">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                        style="background-color: #6B737C;"><span class="material-symbols-outlined"
-                            style="color: #ffffff;">search</span></button>
-                </div>
                 <button class="add-button align-self-center">Adicionar</button>
             </div>
 
@@ -141,14 +133,18 @@
                     <tr>
                         <th></th>
                         <th>ID</th>
-                        <th>Nome Completo</th>
-                        <th>Codigo Usuario</th>
-                        <th>E-mail</th>
-                        <th>Setor</th>
-                        <th>Tipo de Usuario</th>
+                        <th>Categoria</th>
+                        <th>Especificação do Equipamento</th>
+                        <th>Observação</th>
+                        <th>Data de Abertura</th>
+                        <th>Data de Entregra</th>
+                        <th>Tratativa</th>
+                        <th>Status</th>
                     </tr>
 
                     <tr id="content">
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -170,21 +166,17 @@
                                 <span class="material-symbols-outlined">edit</span>
                             </button>
                         </td>
-                        <td>{{id}}</td>
-                        <td>{{nome}}</td>
                         <td>lorem ipsum</td>
-                        <td>{{email}}</td>
-                        <td hx-get="/api/setor/{{setorId}}" mustache-template="setor-nome-template"
-                            hx-trigger="htmx:afterSettle">
-                        </td>
-                        <td>{{admin}}</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
+                        <td>lorem ipsum</td>
 
                     </tr>
                     {{/data}}
-                </template>
-
-                <template id="setor-nome-template">
-                    {{data.nome}}
                 </template>
 
             </div>

@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/equipamentos.css">
     <link rel="stylesheet" href="/style/container.css">
+    <link rel="stylesheet" href="/style/cadastro_user.css">
     <title>TechStock</title>
+
 </head>
 
 <body>
@@ -114,82 +116,70 @@
 
     <div class="b-example-divider"></div>
 
-    <div class="container mt-5">
-        <div class="content">
-            <div class="d-flex align-items-center">
-                <div class="container flex-fill w-100">
-                    <h2>Usuario</h2>
-                </div>
-
-                <div class="input-group p-2" style="width: 60%;">
-                    <input type="text" class="form-control" placeholder="Pesquisar Usuario"
-                        aria-label="Recipient's username" aria-describedby="button-addon2"
-                        style="background-color: #E1E5EB;">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                        style="background-color: #6B737C;"><span class="material-symbols-outlined"
-                            style="color: #ffffff;">search</span></button>
-                </div>
-                <button class="add-button align-self-center">Adicionar</button>
-            </div>
-
-            <hr style="border-top: 3px solid #bbb;">
-
-            <div hx-ext="client-side-templates">
-
-                <table hx-get="/api/usuario" hx-trigger="load" hx-swap="outerHTML" hx-target="#content"
-                    mustache-template="table-template">
-                    <tr>
-                        <th></th>
-                        <th>ID</th>
-                        <th>Nome Completo</th>
-                        <th>Codigo Usuario</th>
-                        <th>E-mail</th>
-                        <th>Setor</th>
-                        <th>Tipo de Usuario</th>
-                    </tr>
-
-                    <tr id="content">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                </table>
-
-
-
-                <template id="table-template">
-                    {{#data}}
-                    <tr>
-                        <td>
-                            <button class="btn" onclick="alert('falta implementar')">
-                                <span class="material-symbols-outlined">edit</span>
-                            </button>
-                        </td>
-                        <td>{{id}}</td>
-                        <td>{{nome}}</td>
-                        <td>lorem ipsum</td>
-                        <td>{{email}}</td>
-                        <td hx-get="/api/setor/{{setorId}}" mustache-template="setor-nome-template"
-                            hx-trigger="htmx:afterSettle">
-                        </td>
-                        <td>{{admin}}</td>
-
-                    </tr>
-                    {{/data}}
-                </template>
-
-                <template id="setor-nome-template">
-                    {{data.nome}}
-                </template>
-
-            </div>
-
+    <div class="form-container">
+        <h2>
+            Cadastro do Usuário
+        </h2>
+        <div class="image-placeholder">
+            <i class="fas fa-user material-symbols-outlined"><span>edit</span>
+            </i>
         </div>
+        <form>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="nomeCompleto">
+                        Nome Completo:
+                    </label>
+                    <input class="form-control" id="nomeCompleto" type="text" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="usuario">
+                        Usuario:
+                    </label>
+                    <input class="form-control" id="usuario" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="setor">
+                        Setor:
+                    </label>
+                    <input class="form-control" id="setor" type="text" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="email">
+                        E-mail:
+                    </label>
+                    <input class="form-control" id="email" type="email" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="senha">
+                        Senha:
+                    </label>
+                    <input class="form-control" id="senha" type="password" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="tipoUsuario">
+                        Tipo de Usuário:
+                    </label>
+                    <select class="form-control" id="tipoUsuario">
+                        <option>
+                            Selecione
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary" type="button">
+                    Voltar
+                </button>
+                <button class="btn btn-primary" type="submit">
+                    Salvar
+                </button>
+            </div>
+        </form>
     </div>
 
 </body>

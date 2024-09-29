@@ -1,0 +1,30 @@
+body {
+  background-color: #e9ecef;
+}
+.navbar {
+  background-color: #1a2b44;
+}
+.navbar-brand img {
+  height: 40px;
+}
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a2b44;
+  margin-bottom: 20px;
+}
+.btn-back {
+  background-color: #d3d3d3;
+  color: #fff;
+}
+.btn-save {
+  background-color: #28a745;
+  color: #fff;
+}

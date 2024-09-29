@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Filtrotickt.css">
+</head>
+<body>
+    <div class="filter-container">
+        <h5>Filtrar por</h5>
+        <form>
+            <div class="mb-3">
+                <label for="dataAbertura" class="form-label">Data de Abertura</label>
+                <div class="d-flex">
+                    <input type="text" class="form-control me-2" id="dataAberturaInicio" value="5/10/2024">
+                    <input type="text" class="form-control" id="dataAberturaFim" value="5/10/2024">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria</label>
+                <input type="text" class="form-control" id="categoria">
+            </div>
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="usuario">
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+                <button type="button" class="btn btn-secondary">Voltar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
