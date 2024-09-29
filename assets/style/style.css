@@ -46,22 +46,22 @@ body {
   scale: 1.5;
 }
 
-ul#nav-items button:hover {
+ul#nav-items li:hover {
   background-color: #274f9d;
   color: white;
 }
 
-ul#nav-items button:focus {
+ul#nav-items li:focus {
   background-color: #274f9d;
   color: white;
 }
 
-div#nav-out button:hover {
+div#nav-out li:hover {
   background-color: #274f9d;
   color: white;
 }
 
-div#nav-out button:focus {
+div#nav-out li:focus {
   background-color: #274f9d;
   color: white;
 }

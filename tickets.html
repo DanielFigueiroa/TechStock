@@ -27,91 +27,9 @@
 <body>
 
 
-    <nav class="navbar sticky-top rounded-0 shadow bg-primary text-start" data-bs-theme="dark"
-        style="background-color: var(--bs-primary) !important;">
-        <div class="container-fluid text-start">
+    <div hx-get="/assets/templates/navbar.html" hx-trigger="load" hx-swap="outerHTML"></div>
 
-            <div>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <span class="material-icons" style="color: #ffffff;">menu</span>
-                </button>
-            </div>
-
-            <div>
-                <button type="button" class="btn fs-5 material-icons perfil" style="color: white;">
-                    <span class="material-symbols-outlined">
-                        notifications
-                    </span>
-                </button>
-                <img src="/assets/image.png" height="50px" width="70px" class="mx-auto">
-            </div>
-
-        </div>
-    </nav>
-
-
-    <div class="offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3 bg-light" tabindex="-1"
-        id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 280px;">
-
-        <p class="align-items-center text-center">
-            <img src="/assets/image.png" alt="" width="80" height="50" class="rounded-circle me-4">
-        </p>
-
-        <p class="align-items-center text-center"><span class="fs-4">Unifacol</span></p>
-        <p class="align-items-center text-center"><span class="fs-4">2024.02</span></p>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto text-start" id="nav-items">
-            <button type="submit" class="btn text-start">
-                <li class="nav-item">
-                    <span class="input-group-text" style="background:transparent; border-width:0">
-                        <span class="material-symbols-outlined">home </span> Home</span>
-                </li>
-            </button>
-
-            <button type="submit" class="btn text-start">
-                <li>
-                    <span class="input-group-text" style="background:transparent; border-width:0">
-                        <span class="material-symbols-outlined">devices</span> Equipamentos</span>
-            </button>
-
-            <button type="submit" class="btn text-start">
-                <li>
-                    <span class="input-group-text" style="background:transparent; border-width:0">
-                        <span class="material-symbols-outlined">confirmation_number </span> Tickets</span>
-            </button>
-
-            <button type="submit" class="btn text-start">
-                <li>
-                    <span class="input-group-text" style="background:transparent; border-width:0">
-                        <span class="material-symbols-outlined">download </span> Entrada</span>
-                </li>
-            </button>
-
-            <button type="submit" class="btn text-start">
-                <li>
-                    <span class="input-group-text" style="background:transparent; border-width:0">
-                        <span class="material-symbols-outlined">upload </span> Saida</span>
-                </li>
-            </button>
-
-            <button type="submit" class="btn text-start">
-                <li>
-                    <span class="input-group-text" style="background:transparent; border-width:0"><span
-                            class="material-symbols-outlined">person
-                        </span>
-                        Usuario</span>
-                </li>
-            </button>
-        </ul>
-        <hr>
-        <div class="dropdown" id="nav-out">
-            <button type="submit" class="btn"><span class="input-group-text"
-                    style="background:transparent; border-width:0"><span
-                        class="material-icons">logout</span>Sair</span></button>
-        </div>
-
-    </div>
+    <div hx-get="/assets/templates/sidebar.html" hx-trigger="load" hx-swap="outerHTML"></div>
 
     <div class="b-example-divider"></div>
 
