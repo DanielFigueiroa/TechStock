@@ -26,6 +26,7 @@
 
 <body>
 
+
     <div hx-get="/assets/templates/navbar.html" hx-trigger="load" hx-swap="outerHTML"></div>
 
     <div hx-get="/assets/templates/sidebar.html" hx-trigger="load" hx-swap="outerHTML"></div>
@@ -36,32 +37,41 @@
         <div class="content">
             <div class="d-flex align-items-center">
                 <div class="container flex-fill w-100">
-                    <h2>Log & Abertura de Tickets</h2>
+                    <h2>Movimentacao</h2>
                 </div>
 
-                <button class="add-button align-self-center">Adicionar</button>
+                <div class="input-group p-2" style="width: 60%;">
+                    <input type="text" class="form-control" placeholder="Pesquisar Usuario"
+                        aria-label="Recipient's username" aria-describedby="button-addon2"
+                        style="background-color: #E1E5EB;">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                        style="background-color: #6B737C;"><span class="material-symbols-outlined"
+                            style="color: #ffffff;">search</span></button>
+                </div>
             </div>
 
             <hr style="border-top: 3px solid #bbb;">
 
             <div hx-ext="client-side-templates">
 
-                <table hx-get="/api/usuario" hx-trigger="load" hx-swap="outerHTML" hx-target="#content"
+                <table hx-get="/api/movimentacao" hx-trigger="load" hx-swap="outerHTML" hx-target="#content"
                     mustache-template="table-template">
                     <tr>
-                        <th></th>
-                        <th>ID</th>
-                        <th>Categoria</th>
-                        <th>Especificação do Equipamento</th>
-                        <th>Observação</th>
-                        <th>Data de Abertura</th>
-                        <th>Data de Entregra</th>
-                        <th>Tratativa</th>
-                        <th>Status</th>
+
+
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Especificação do Equipamento</th>
+                        <th class="text-center">Observação</th>
+                        <th class="text-center">Data Abertura</th>
+                        <th class="text-center">Data Entrega</th>
+                        <th class="text-center">Tratativa</th>
+                        <th class="text-center">Status</th>
+
                     </tr>
 
                     <tr id="content">
-                        <td></td>
+
                         <td></td>
                         <td></td>
                         <td></td>
@@ -75,23 +85,18 @@
                 </table>
 
 
-
                 <template id="table-template">
                     {{#data}}
                     <tr>
-                        <td>
-                            <button class="btn" onclick="alert('falta implementar')">
-                                <span class="material-symbols-outlined">edit</span>
-                            </button>
-                        </td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
-                        <td>lorem ipsum</td>
+
+                        <td>{{id}}</td>
+                        <td>{{ticket.equipamento.categoria.nome}}</td>
+                        <td>{{ticket.equipamento.descricao}}</td>
+                        <td>{{ticket.observacao}}</td>
+                        <td>{{ticket.dt_abertura}}</td>
+                        <td>{{ticket.dt_devolucao}}</td>
+                        <td>{{usuarioAdm.nome}}</td>
+                        <td>{{ticket.status}}</td>
 
                     </tr>
                     {{/data}}
@@ -101,6 +106,7 @@
 
         </div>
     </div>
+
 
 </body>
 
