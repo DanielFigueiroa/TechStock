@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro em Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .modal.right .modal-dialog {
+            position: fixed;
+            right: 0;
+            margin: auto;
+            width: 320px;
+            height: 100%;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+        .modal.right .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .modal.right .modal-body {
+            padding: 15px 15px 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Botão para abrir o modal -->
+        <button id="openFilterModal" class="btn btn-info">Mostrar Filtro</button>
+
+        <!-- Modal de Filtro -->
+        <div class="modal fade right" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="filterModalLabel">Filtrar por</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoria</label>
+                                <input type="text" class="form-control" id="categoria">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fabricante" class="form-label">Fabricante</label>
+                                <input type="text" class="form-control" id="fabricante">
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status">
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3i5m5b4hcpxyD9F7jL+3
