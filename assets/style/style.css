@@ -66,6 +66,10 @@ div#nav-out li:focus {
   color: white;
 }
 
-.botao-href {
+.botao-href,.botao-href * {
   text-decoration-line: none;
+  color: inherit;
+}
+.botao-href:hover,.botao-href *:hover {
+  color: inherit;
 }
