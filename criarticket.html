@@ -36,6 +36,7 @@
             if (ev.detail.elt.localName !== "form") return;
             ev.detail.parameters.equipamentoId = Number(ev.detail.parameters.equipamentoId);
             ev.detail.parameters.usuarioId = 1;
+            console.log({ ...ev.detail.parameters });
         }
         function handleResponse(ev) {
             if (ev.detail.elt.localName !== "form") return;
