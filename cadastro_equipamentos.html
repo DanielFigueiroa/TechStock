@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script>
     <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
     <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script>
     <script src="https://unpkg.com/mustache@latest"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,7 +27,7 @@
 
 </head>
 
-<body>
+<body hx-ext="client-side-templates">
 
     <div hx-get="/assets/templates/navbar.html" hx-trigger="load" hx-swap="outerHTML"></div>
 
@@ -34,37 +35,72 @@
 
     <div class="b-example-divider"></div>
 
+    <script type="text/javascript">
+        function handleRequest(ev) {
+            if (ev.detail.elt.localName !== "form") return;
+            ev.detail.parameters.categoria = +ev.detail.parameters.categoria;
+            console.log({ ...ev.detail.parameters });
+        }
+        function handleResponse(ev) {
+            if (ev.detail.elt.localName !== "form") return;
+            if (ev.detail.successful) {
+                alert("Equipamento cadastrado com sucesso");
+                location = "/equipamento";
+            } else {
+                alert("Erro ao tentar criar um equipamento");
+            }
+        }
+    </script>
+
     <div class="container d-flex justify-content-center">
         <div class="form-container">
             <div class="form-title">
                 Cadastro de Equipamento
             </div>
-            <form>
+            <form hx-post="/api/equipamento" hx-trigger="submit" hx-ext='json-enc' hx-swap="none"
+                hx-on::config-request="handleRequest(event)" hx-on::after-request="handleResponse(event)">
                 <div class="row mb-3">
+
+                    <div class="col">
+                        <label class="form-label" for="nome">
+                            Nome
+                        </label>
+                        <input class="form-control" id="nome" name="nome" type="text" />
+                    </div>
+
                     <div class="col">
                         <label class="form-label" for="categoria">
                             Categoria
                         </label>
-                        <input class="form-control" id="categoria" type="text" />
+                        <select id="categoria" name="categoria" class="form-select" hx-get="/api/categoria"
+                            hx-trigger="load" mustache-template="select-categoria-template" hx-swap="outerHTML" disabled
+                            required>
+                            <option>Carregando Categoria...</option>
+                        </select>
+
+                        <!-- <a href=""></a> -->
+
                     </div>
                     <div class="col">
                         <label class="form-label" for="especificacao">
-                            Especificação
+                            Modelo
                         </label>
-                        <input class="form-control" id="especificacao" type="text" />
+                        <input class="form-control" id="especificacao" name="modelo" type="text" />
                     </div>
                     <div class="col">
                         <label class="form-label" for="fabricante">
                             Fabricante
                         </label>
-                        <input class="form-control" id="fabricante" type="text" />
+                        <input class="form-control" id="fabricante" name="fabricante" type="text" />
                     </div>
                     <div class="col">
-                        <label class="form-label" for="quantidade">
-                            Quantidade
+                        <label class="form-label" for="tombamento">
+                            Tombamento
                         </label>
-                        <input class="form-control" id="quantidade" type="text" />
+                        <input class="form-control" id="tombamento" name="tombamento" type="text" />
                     </div>
+
+
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="/equipamento" class="btn btn-back botao-hreftype=" button">
@@ -75,6 +111,16 @@
                     </button>
                 </div>
             </form>
+
+            <template id="select-categoria-template">
+                <select id="categoria" name="categoria" class="form-select" required>
+                    <option value="">Selecione a categoria...</option>
+                    {{#data}}
+                    <option value="{{id}}">{{nome}}</option>
+                    {{/data}}
+                </select>
+            </template>
+
         </div>
     </div>
 

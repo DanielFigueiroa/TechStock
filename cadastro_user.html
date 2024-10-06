@@ -73,19 +73,19 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="usuario">
-                        Usuario:
+                        Código do Funcionário:
                     </label>
-                    <input class="form-control" id="usuario" name="usuario" type="text" />
+                    <input class="form-control" id="usuario" name="codigo" type="text" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label for="setor">
-                        Setor:
+                    <label for="curso">
+                        Curso:
                     </label>
-                    <select id="setor" name="setorId" class="form-select" hx-get="/api/setor" hx-trigger="load"
-                        mustache-template="select-setor-template" hx-swap="outerHTML" disabled required>
-                        <option>Carregando Setor...</option>
+                    <select id="curso" name="setorId" class="form-select" hx-get="/api/setor" hx-trigger="load"
+                        mustache-template="select-curso-template" hx-swap="outerHTML" disabled required>
+                        <option>Carregando Curso...</option>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
@@ -121,9 +121,9 @@
                 </button>
             </div>
 
-            <template id="select-setor-template">
-                <select id="setor" name="setorId" class="form-select" required>
-                    <option value="">Selecione o setor...</option>
+            <template id="select-curso-template">
+                <select id="curso" name="setorId" class="form-select" required>
+                    <option value="">Selecione o curso...</option>
                     {{#data}}
                     <option value="{{id}}">{{nome}}</option>
                     {{/data}}
