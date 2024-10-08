@@ -58,7 +58,7 @@
         <script type="text/javascript">
             function setDefaultOption(ev) {
                 for (const element of ev.detail.elt) {
-                    if (element.getAttribute("value") == location.href.split("/").at(-1)) {
+                    if (element.getAttribute("value") == currentEquipamento.categoria.id) {
                         element.setAttribute("selected", "")
                     }
                 }
@@ -74,23 +74,32 @@
                 <div id="replace-body"></div>
                 <script class="remove-elements" type="text/javascript">
 
-
                     let id = location.href.split("/").at(-1);
-                    $("#replace-body").replaceWith(() => {
-                        return `
-                        <div hx-get="/api/equipamento/${id}"
-                            mustache-template="form-body"
-                            hx-swap="outerHTML"
-                            hx-trigger="load"
-                        ></div>
-                        `;
-                    });
-                    $(".remove-elements").remove();
+
+                    document.addEventListener("htmx:load", bootstrapEditPage);
+                    async function test(elt, ev) {
+                        document.removeEventListener("htmx:load", test);
+                        console.log("foo in");
+                    }
+
+                    async function bootstrapEditPage(elt, ev) {
+                        document.removeEventListener("htmx:load", bootstrapEditPage);
+                        let response = await fetch(`/api/equipamento/${id}`, { method: "GET", });
+                        let responseJSON = await response.json();
+                        currentEquipamento = responseJSON.data;
+
+                        $("#replace-body").replaceWith(
+                            () => Mustache.render(
+                                $("template#form-body").html(),
+                                currentEquipamento
+                            )
+                        );
+                        htmx.process($(".form-container > form")[0]);
+                        $(".remove-elements").remove();
+                    }
                 </script>
 
                 <template id="form-body" hx-disable="">
-
-                    {{#data}}
                     <form hx-put="/api/equipamento/{{id}}" hx-trigger="submit" hx-ext='json-enc' hx-swap="none"
                         hx-on::config-request="handleRequest(event)" hx-on::after-request="handleResponse(event)">
                         <div class="row mb-3">
@@ -149,8 +158,6 @@
                             </button>
                         </div>
                     </form>
-                    {{/data}}
-
                 </template>
 
                 <template id="select-categoria-template">
