@@ -55,6 +55,58 @@
 
             <div hx-ext="client-side-templates">
 
+                <script type="text/javascript">
+
+                    let resultSetor = $.ajax({
+                        url: '/api/setor',
+                        type: 'get',
+                        dataType: 'json',
+                        async: false,
+                    }).responseJSON.data;
+
+                    function getSetorDescricao(codigo) {
+                        let result = resultSetor.find(value => value.codigo === codigo);
+                        return result.descricao || "";
+                    }
+
+                    function convertSetorElt() {
+                        for (const SetorObj of resultSetor) {
+                            let Setor = SetorObj.codigo;
+                            $(`.setor-replace-${Setor}`).replaceWith(
+                                () => {
+                                    $(`.setor-replace-${Setor}`).html("class");
+                                    return `<td>${getSetorDescricao(Setor)}</td>`;
+                                }
+                            )
+                        }
+                    }
+
+                    let resultStatuses = $.ajax({
+                        url: '/api/equipamento/statuses',
+                        type: 'get',
+                        dataType: 'json',
+                        async: false,
+                    }).responseJSON.data;
+
+                    function getStatusDescricao(codigo) {
+                        let result = resultStatuses.find(value => value.codigo === codigo);
+                        return result.descricao || "";
+                    }
+
+                    function convertStatusElt() {
+
+                        for (const statusObj of resultStatuses) {
+                            let status = statusObj.codigo;
+                            $(`.equipamento-replace-${status}`).replaceWith(
+                                () => {
+                                    $(`.equipamento-replace-${status}`).html("class");
+                                    return `<td>${getStatusDescricao(status)}</td>`;
+                                }
+                            )
+                        }
+                    }
+                </script>
+
                 <table hx-get="/api/ticket" hx-vals="js:{...getFilter()}" hx-trigger="load" hx-swap="outerHTML"
                     hx-target="table #content" mustache-template="table-template">
                     <tr>
@@ -102,8 +154,8 @@
                         <td>{{dt_devolucao}}</td>
                         <td>{{observacao}}</td>
                         <td>{{usuario.nome}}</td>
-                        <td hx-get="/api/setor">{{usuarioComEquipamento.setorId.nome}}</td>
-                        <td>{{status}}</td>
+                        <td class="setor-replace-{{status}}"> </td>
+                        <td class="equipamento-replace-{{status}}"> </td>
                     </tr>
                     {{/data}}
                 </template>
