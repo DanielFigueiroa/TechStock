@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/htmx.org"></script>
     <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script>
     <script src="https://unpkg.com/mustache@latest"></script>
@@ -63,25 +64,24 @@
                         async: false,
                     }).responseJSON.data;
 
-                    function getSetorDescricao(codigo) {
-                        let result = resultSetor.find(value => value.codigo === codigo);
-                        return result.descricao || "";
+                    function getSetorNome(id) {
+                        let result = resultSetor.find(value => value.id === id);
+                        return result.nome || "";
                     }
 
                     function convertSetorElt() {
                         for (const SetorObj of resultSetor) {
-                            let Setor = SetorObj.codigo;
+                            let Setor = SetorObj.id;
                             $(`.setor-replace-${Setor}`).replaceWith(
                                 () => {
-                                    $(`.setor-replace-${Setor}`).html("class");
-                                    return `<td>${getSetorDescricao(Setor)}</td>`;
+                                    return `<td>${getSetorNome(Setor)}</td>`;
                                 }
                             )
                         }
                     }
 
                     let resultStatuses = $.ajax({
-                        url: '/api/equipamento/statuses',
+                        url: '/api/ticket/statuses',
                         type: 'get',
                         dataType: 'json',
                         async: false,
@@ -96,18 +96,23 @@
 
                         for (const statusObj of resultStatuses) {
                             let status = statusObj.codigo;
-                            $(`.equipamento-replace-${status}`).replaceWith(
+                            $(`.status-replace-${status}`).replaceWith(
                                 () => {
-                                    $(`.equipamento-replace-${status}`).html("class");
                                     return `<td>${getStatusDescricao(status)}</td>`;
                                 }
                             )
                         }
                     }
+
+                    function convertSetorStatus() {
+                        convertSetorElt();
+                        convertStatusElt();
+                    }
                 </script>
 
                 <table hx-get="/api/ticket" hx-vals="js:{...getFilter()}" hx-trigger="load" hx-swap="outerHTML"
-                    hx-target="table #content" mustache-template="table-template">
+                    hx-target="table #content" mustache-template="table-template"
+                    hx-on::after-settle="convertSetorStatus()">
                     <tr>
 
                         <th class="text-center">Num Ticket</th>
@@ -153,8 +158,8 @@
                         <td>{{dt_devolucao}}</td>
                         <td>{{observacao}}</td>
                         <td>{{usuario.nome}}</td>
-                        <td class="setor-replace-{{status}}"> </td>
-                        <td class="equipamento-replace-{{status}}"> </td>
+                        <td class="setor-replace-{{usuario.setorId}}"> </td>
+                        <td class="status-replace-{{status}}"> </td>
                     </tr>
                     {{/data}}
                 </template>

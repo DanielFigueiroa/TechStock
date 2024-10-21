@@ -47,7 +47,6 @@
             function handleRequest(ev) {
                 if (ev.detail.elt.localName !== "form") return;
                 ev.detail.parameters.setorId = +ev.detail.parameters.setorId;
-                ev.detail.parameters.admin = String(ev.detail.parameters.admin).toLowerCase() === "true";
                 console.log({ ...ev.detail.parameters });
 
             }
@@ -107,8 +106,8 @@
                         Tipo de Usuário:
                     </label>
                     <select class="form-control" id="tipoUsuario" name="admin">
-                        <option value="true">Adminstrador</option>
-                        <option value="false">Usuario Padrao</option>
+                        <option value="ADMIN">Adminstrador</option>
+                        <option value="USER">Usuario Padrao</option>
                     </select>
                 </div>
             </div>

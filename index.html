@@ -11,9 +11,31 @@
     <link rel="stylesheet" href="/assets/style/index.css">
     <title>TechStock</title>
     <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.3/dist/ext/json-enc.js"></script>
 </head>
 
 <body>
+
+    <script>
+        function handleRequest(event) {
+
+            event.detail.xhr.setRequestHeader("Content-Type", "application/json");
+            event.detail.xhr.setRequestHeader("Accept", "application/json");
+        }
+
+        function handleResponse(event) {
+
+            if (event.detail.successful) {
+                localStorage.setItem("token", JSON.parse(event.detail.xhr.response)["data"]["token"]);
+
+                //TODO: Redirecionar para a página de dashboard
+
+                window.location.href = "/dashboard";
+            } else {
+                alert("Usuário ou senha inválidos");
+            }
+        }
+    </script>
 
     <div class="d-flex flex-column min-vh-100 justify-content-center">
         <div class="mx-auto">
@@ -23,7 +45,8 @@
 
                 <h2 class="text-primary mx-auto">Login</h2>
 
-                <form action="/dashboard">
+                <form hx-post="/api/usuario/login" hx-on::config-request="handleRequest(event)"
+                    hx-on::after-request="handleResponse(event)" hx-ext='json-enc' hx-swap="none">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><span class="material-icons">person</span></span>
@@ -35,7 +58,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><span class="material-icons">lock</span></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Password" id="usr" name="password">
+                        <input type="password" class="form-control" placeholder="Password" id="usr" name="password">
                     </div>
 
                     <div class="input-group">
