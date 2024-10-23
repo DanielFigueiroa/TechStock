@@ -58,45 +58,8 @@
 
 
             <div hx-ext="client-side-templates">
-                <script type="text/javascript">
+                <script src="/assets/js/equipamentos.js"></script>script
 
-                    let resultStatuses = $.ajax({
-                        url: '/api/equipamento/statuses',
-                        type: 'get',
-                        dataType: 'json',
-                        async: false,
-                    }).responseJSON.data;
-
-                    function getStatusDescricao(codigo) {
-                        let result = resultStatuses.find(value => value.codigo === codigo);
-                        return result.descricao || "";
-                    }
-
-                    function convertStatusElt() {
-
-                        for (const statusObj of resultStatuses) {
-                            let status = statusObj.codigo;
-                            $(`.equipamento-replace-${status}`).replaceWith(
-                                () => {
-                                    $(`.equipamento-replace-${status}`).html("class");
-                                    return `
-                                    <td>
-                                        <a onclick="" href="#" class="link">${getStatusDescricao(status)}</a>
-                                    </td>
-                                    `;
-                                }
-                            )
-                        }
-                    }
-                    // criar uma função para puxar json do equipamento da api baseado no id
-                    // function getEquipamento(id) {
-                    //     let result = resultEquipamento.find(value => value.id === id);
-                    //     return result.nome || "";
-                    // }
-
-
-
-                </script>
 
                 <table hx-get="/api/equipamento" hx-vals="js:{...getFilter()}" hx-trigger="load" hx-swap="outerHTML"
                     hx-target="table #content" hx-on::after-settle="convertStatusElt()"
@@ -139,7 +102,7 @@
                         <td>{{categoria.nome}}</td>
                         <td>{{nome}}</td>
                         <td>{{fabricante}}</td>
-                        <td class="equipamento-replace-{{status}}"> </td>
+                        <td class="equipamento-replace-{{status}} id-{{id}}"> </td>
                         <td>{{dtSaida}}</td>
                         <td>{{usuarioComEquipamento.nome}}</td>
                     </tr>
