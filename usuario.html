@@ -13,6 +13,7 @@
         <script src="https://unpkg.com/htmx.org"></script>
         <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script>
         <script src="https://unpkg.com/mustache@latest"></script>
+        <script src="/assets/js/checkAuth.js"></script>
         <script src="/assets/js/utils.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,39 +54,13 @@
 
                 <hr style="border-top: 3px solid #bbb;">
 
-                <script type="text/javascript">
-
-                    let resultSetores = $.ajax({
-                        url: '/api/setor',
-                        type: 'get',
-                        dataType: 'json',
-                        async: false,
-                    }).responseJSON.data;
-
-                    function getSetoresNome(codigo) {
-                        let result = resultSetores.find(value => value.id === codigo);
-                        return result.nome || "";
-                    }
-
-                    function convertSetorElt() {
-
-                        for (const setorObj of resultSetores) {
-                            let setor = setorObj.id;
-                            $(`.usuario-replace-${setor}`).replaceWith(
-                                () => {
-                                    $(`.usuario-replace-${setor}`).html("class");
-                                    return `<td>${getSetoresNome(setor)}</td>`;
-                                }
-                            )
-                        }
-                    }
-                </script>
+                <script src="/assets/js/usuario.js"></script>
 
                 <div hx-ext="client-side-templates">
                     <table hx-get="/api/usuario" hx-vals="js:{...getFilter()}" hx-trigger="load" hx-swap="outerHTML"
                         hx-target="table #content" mustache-template="table-template"
-                        hx-on::after-settle="convertSetorElt()"
-                        hx-headers='js: {"Authorization": localStorage.getItem("token")}'>
+                        hx-on::after-settle="convertSetorElt()">
+                        <!-- hx-headers='js: ...getAuth()' -->
                         <tr>
                             <th></th>
                             <th>ID</th>
